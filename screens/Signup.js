@@ -1,12 +1,26 @@
 import React from 'react'
 
-import {View,Text,StyleSheet} from 'react-native'
+import {View,Text,StyleSheet,Image,Button} from 'react-native'
 
 
-const Signup = () => {
+const Signup = ({navigation}) => {
     return (
         <View style={styles.container}>
-            <Text>Sing uP screen</Text>
+            <Image 
+            source={require('../assets/signupimg.png')}
+            />
+            <Text>Stay on top your finance with us </Text>
+            <Text>We are your new financial Advisors
+to recommed the best investments for you.</Text>
+<Button 
+title='Create Account'
+onPress={() => navigation.navigate('CreateAccount') }
+/>
+
+<Button 
+onPress={() => navigation.navigate('HomePage') }
+title='Login'
+/>
         </View>
     )
 }
@@ -19,6 +33,7 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
     },
+    
   });
   
 
