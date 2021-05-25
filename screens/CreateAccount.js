@@ -1,27 +1,62 @@
 import React from "react";
 
-import { View, Text, StyleSheet, Image, Button, TextInput,TouchableWithoutFeedback,Keyboard} from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  Button,
+  TextInput,
+  TouchableWithoutFeedback,
+  Keyboard,
+  TouchableOpacity
+} from "react-native";
 import FlatButton from "../components/Button";
 
-const CreateAccount = () => {
+
+
+
+
+const CreateAccount = ({navigation}) => {
   return (
-    <TouchableWithoutFeedback
-    onPress={() => Keyboard.dismiss() }
-    >
-  <View style={styles.container}>
-      <Text style={styles.title}>Create Account</Text>
-      <Text style={styles.subtitle}>Invest and double your income now</Text>
-      <TextInput style={styles.input} placeholder="Full name" textAlign='left' />
-      <TextInput style={styles.input} placeholder="Email address"  textAlign='left' keyboardType="email-address" />
-      <TextInput style={styles.input} placeholder="password" textAlign='left'  keyboardType="visible-password" />
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+   
+      
+      <View style={styles.container}>
+     
+        <Text style={styles.title}>Create Account</Text>
+        <Text style={styles.subtitle}>Invest and double your income now</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Full name"
+          textAlign="left"
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Email address"
+          textAlign="left"
+          keyboardType="email-address"
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="password"
+          textAlign="left"
+          keyboardType="visible-password"
+        />
 
-      <FlatButton text="Create Account" />
+        <FlatButton text="Create Account" />
 
-      {/* <FlatButton text="Already have an account"  /> */}
-      <Text style={styles.btn}>Already have an account</Text>
-    </View>
+
+        <TouchableOpacity
+        onPress={() => navigation.navigate("HomePage") }
+        >
+        <Text style={styles.btn}>Already have an account?</Text>
+        </TouchableOpacity>
+       
+      </View>
+    
+     
     </TouchableWithoutFeedback>
-  
   );
 };
 
@@ -30,16 +65,16 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-start",
+    paddingTop:20
   },
   input: {
     borderWidth: 1,
     borderColor: "#ddd",
-    // paddingVertical:15,
-    // paddingHorizontal:100,
+    paddingVertical:15,
     width: "80%",
     padding: 10,
-   
+
     fontSize: 18,
     borderRadius: 18,
     marginVertical: 10,
@@ -59,6 +94,7 @@ const styles = StyleSheet.create({
   btn: {
     marginTop: 10,
     color: "#31A062",
+    fontSize:17
   },
 });
 

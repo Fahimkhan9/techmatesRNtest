@@ -1,38 +1,99 @@
 import React from "react";
-import { View, Text, StyleSheet, Button } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  TouchableOpacity,
+} from "react-native";
 import FlatButton from "../components/Button";
 import SecondaryButton from "../components/SecondaryButton";
 import StockCard from "../components/StockCard";
 import InvestmentGuideCard from "../components/InvestmentGuideCard";
 
+import { useNavigation } from "@react-navigation/native";
+
+const data = [
+  {
+    title: "title",
+    subtitle: "subtitle",
+    id: "1",
+  },
+  {
+    title: "titldsfse",
+    subtitle: "subtitle",
+    id: "2",
+  },
+  {
+    title: "titsdfsdfle",
+    subtitle: "subtitle",
+    id: "3",
+  },
+  {
+    title: "tisfdsftle",
+    subtitle: "subtitle",
+    id: "4",
+  },
+  {
+    title: "titafdsfle",
+    subtitle: "subtitle",
+    id: "5",
+  },
+  {
+    title: "fsdf",
+    subtitle: "subtitle",
+    id: "6",
+  },
+];
+
 const HomePage = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome, Jessie</Text>
+      {/* porfoliocard section */}
       <View style={styles.portfoliocard}>
         <Text style={styles.whiteColor}>Your total asset portfolio</Text>
         <View style={styles.profileinsidediv}>
           <Text style={styles.whiteColor}>N203,935</Text>
 
-          <SecondaryButton text="Invest Now" />
+          <SecondaryButton
+            text="Invest Now"
+            onPress={() => navigation.goBack()}
+          />
         </View>
       </View>
+      {/* plans section */}
+      <View style={styles.plansection}>
+        {/* plansheader section */}
+        <View style={styles.plansHeader}>
+          <Text style={styles.plansHeadertitle}>Best Plans</Text>
+          <Text style={styles.plansHeadersubtitle}>See all</Text>
+        </View>
+        {/* planslist */}
+        <View>
 
-      <View style={styles.plansHeader}>
-        <Text style={styles.plansHeadertitle}>Best Plans</Text>
-        <Text style={styles.plansHeadersubtitle}>See all</Text>
+          <StockCard>Hello world</StockCard>
+        </View>
       </View>
+      {/* investment guide section */}
       <View>
-        <StockCard>HEllo world</StockCard>
-      </View>
-
-      <View
-      //  style={styles.investmentguideheader}
-      >
-        <Text style={styles.investmentguideheadertitle}>Investment guide</Text>
-      </View>
-      <View>
-        <InvestmentGuideCard />
+        {/* investment guide section header */}
+        <View style={styles.investmentguideheader}>
+          <Text style={styles.investmentguideheadertitle}>
+            Investment Guide
+          </Text>
+        </View>
+        <View>
+          <FlatList
+            data={data.slice(0, 4)}
+            renderItem={({ item }) => (
+              <TouchableOpacity>
+                <InvestmentGuideCard />
+              </TouchableOpacity>
+            )}
+          />
+        </View>
       </View>
     </View>
   );
@@ -48,7 +109,6 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: "bold",
     fontSize: 40,
-    textAlign: "center",
     paddingBottom: 15,
   },
   subtitle: {
@@ -76,34 +136,32 @@ const styles = StyleSheet.create({
     fontWeight: "normal",
     fontSize: 20,
   },
+  plansection: {
+    padding: 20,
+  },
   plansHeader: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
-    //   padding:20,
     width: 350,
-    //   margin:20,
   },
   plansHeadertitle: {
     fontWeight: "bold",
-    fontSize: 20,
-    // textAlign: "center",
-    // paddingBottom: 15,
+    fontSize: 25,
+    paddingLeft: 5,
   },
   plansHeadersubtitle: {
     fontWeight: "bold",
     fontSize: 20,
     color: "#FE555D",
   },
-  investmentguideheader: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "flex-start",
-  },
+  // investmentguideheader: {}
+  // ,
   investmentguideheadertitle: {
     fontWeight: "bold",
-    fontSize: 20,
-    alignSelf: "flex-start",
+    fontSize: 25,
+    textAlign: "left",
+    paddingLeft: 5,
   },
 });
 
