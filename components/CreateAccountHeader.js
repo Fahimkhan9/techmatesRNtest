@@ -1,31 +1,26 @@
-import React from 'react'
+import React from "react";
 
-import {View,Text,StyleSheet} from 'react-native'
-import { Ionicons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
+import { View, StyleSheet } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 const CreateAccountHeader = () => {
-    const navigation = useNavigation();
-    return (
-        <View
-         style={styles.header}
-         >
-           
-            <Ionicons 
-            name="chevron-back"
-             size={24}
-              color="black" 
-              onPress={() => navigation.goBack() }
-              />
-        </View>
-    )
-}
-
+  const navigation = useNavigation();
+  return (
+    <View style={styles.header}>
+      <Ionicons
+        name="chevron-back"
+        size={24}
+        color="black"
+        onPress={() => navigation.goBack()}
+      />
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
-    header: {
-        padding:20
-    }
-})
+  header: {
+    padding: 20,
+  },
+});
 
-
-export default CreateAccountHeader
+export default CreateAccountHeader;

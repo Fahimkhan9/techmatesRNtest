@@ -1,29 +1,20 @@
-import React from "react";
-
+import React from "react"
 import {
   View,
   Text,
   StyleSheet,
-  Image,
-  Button,
   TextInput,
   TouchableWithoutFeedback,
   Keyboard,
   TouchableOpacity
-} from "react-native";
-import FlatButton from "../components/Button";
-
-
-
+} from "react-native"
+import FlatButton from "../components/Button"
 
 
 const CreateAccount = ({navigation}) => {
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-   
-      
       <View style={styles.container}>
-     
         <Text style={styles.title}>Create Account</Text>
         <Text style={styles.subtitle}>Invest and double your income now</Text>
         <TextInput
@@ -43,19 +34,13 @@ const CreateAccount = ({navigation}) => {
           textAlign="left"
           keyboardType="visible-password"
         />
-
         <FlatButton text="Create Account" />
-
-
         <TouchableOpacity
         onPress={() => navigation.navigate("HomePage") }
         >
         <Text style={styles.btn}>Already have an account?</Text>
         </TouchableOpacity>
-       
       </View>
-    
-     
     </TouchableWithoutFeedback>
   );
 };

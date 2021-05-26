@@ -1,15 +1,20 @@
-import React from "react";
-import { StyleSheet, View, Text, Image } from "react-native";
+import React from "react"
+import { StyleSheet, View, Text, Image } from "react-native"
 
-export default function InvestmentGuideCard() {
+export default function InvestmentGuideCard(props) {
+  const {title,subtitle} =props
   return (
-    <View>
+    <View
+    style={{
+      flex:1,
+      paddingHorizontal:15
+    }}
+    >
       <View style={styles.card}>
         <View style={styles.cardContent}>
-          <Text style={styles.cardtitle}>Basic type of investments</Text>
+          <Text style={styles.cardtitle}>{title}</Text>
           <Text numberOfLines={3}>
-            This is how you set your foot for 2020 Stock market recession.
-            What’s next...
+          {subtitle}
           </Text>
         </View>
         <View style={styles.cardImg}>
@@ -27,10 +32,13 @@ const styles = StyleSheet.create({
   card: {
     display: "flex",
     flexDirection: "row",
-    width: "75%",
+    // justifyContent:'center',
+    width: "80%",
+    // flex:1,
+  
   },
   cardContent: {
-    paddingHorizontal: 5,
+    paddingHorizontal: 10,
   },
   cardtitle: {
     paddingVertical: 5,
@@ -40,7 +48,9 @@ const styles = StyleSheet.create({
   cardsubtitle: {
     lineHeight: 10,
   },
-  // cardImg: {},
+  cardImg: {
+    alignSelf:"flex-end"
+  },
   horizonticallinecontainer: {
     flexDirection: "row",
     alignItems: "center",

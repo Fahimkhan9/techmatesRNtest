@@ -1,56 +1,68 @@
-import React from "react";
+import React from "react"
 import {
   View,
   Text,
   StyleSheet,
   FlatList,
-  TouchableOpacity,
-} from "react-native";
-import FlatButton from "../components/Button";
-import SecondaryButton from "../components/SecondaryButton";
-import StockCard from "../components/StockCard";
-import InvestmentGuideCard from "../components/InvestmentGuideCard";
+  ScrollView
+} from "react-native"
+import SecondaryButton from "../components/SecondaryButton"
+import StockCard from "../components/StockCard"
+import InvestmentGuideCard from "../components/InvestmentGuideCard"
+import { useNavigation } from "@react-navigation/native"
 
-import { useNavigation } from "@react-navigation/native";
 
-const data = [
+
+const data =[
   {
-    title: "title",
-    subtitle: "subtitle",
-    id: "1",
+    title:"Golden",
+    subtitle:"30% Return",
+    id:"1"
   },
   {
-    title: "titldsfse",
-    subtitle: "subtitle",
-    id: "2",
+    title:"Silver",
+    subtitle:"50% Return",
+    id:"2"
   },
   {
-    title: "titsdfsdfle",
-    subtitle: "subtitle",
-    id: "3",
+    title:"Platine",
+    subtitle:"90% Return",
+  
+    id:"3"
   },
   {
-    title: "tisfdsftle",
-    subtitle: "subtitle",
-    id: "4",
+    title:"a",
+    subtitle:"30% Return",
+
+    id:"4"
   },
+]
+
+const d= [
   {
-    title: "titafdsfle",
-    subtitle: "subtitle",
-    id: "5",
+    title:"Basic type of investments",
+    subtitle:"This is how you set your foot for 2020 Stock market recession. What’s next...",
+    id:'1',
   },
-  {
-    title: "fsdf",
-    subtitle: "subtitle",
-    id: "6",
+ {
+    title:"How much can you start wit..",
+    subtitle:"What do you like to see? It’s a very different market from 2018. The way...",
+    id:'2'
   },
-];
+   {
+    title:"How much can you start wit..",
+    subtitle:"What do you like to see? It’s a very different market from 2018. The way...",
+    id:'3'
+  },
+
+]
 
 const HomePage = () => {
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome, Jessie</Text>
+    <ScrollView>
+     <Text style={styles.title}>Welcome, Jessie</Text>
       {/* porfoliocard section */}
       <View style={styles.portfoliocard}>
         <Text style={styles.whiteColor}>Your total asset portfolio</Text>
@@ -71,9 +83,29 @@ const HomePage = () => {
           <Text style={styles.plansHeadersubtitle}>See all</Text>
         </View>
         {/* planslist */}
-        <View>
+        <View
+        style={styles.planslist}
+        >
 
-          <StockCard>Hello world</StockCard>
+        <FlatList 
+        data={data}
+        // keyExtractor={({item}) => item.id }
+        horizontal={true}
+        renderItem={({item}) => (
+          <View>
+         <StockCard
+         title={item.title}
+        subtitle={item.subtitle}
+
+         />
+          </View>
+        )}
+        />
+
+          
+         
+
+        
         </View>
       </View>
       {/* investment guide section */}
@@ -85,16 +117,26 @@ const HomePage = () => {
           </Text>
         </View>
         <View>
-          <FlatList
-            data={data.slice(0, 4)}
-            renderItem={({ item }) => (
-              <TouchableOpacity>
-                <InvestmentGuideCard />
-              </TouchableOpacity>
-            )}
-          />
+            <FlatList 
+        data={d}
+        // keyExtractor={({item}) => item.id }
+       
+        renderItem={({item}) => (
+          <View>
+<InvestmentGuideCard 
+
+title={item.title}
+subtitle={item.subtitle}
+/>
+          </View>
+        )}
+        />
+         
+       
         </View>
       </View>
+    </ScrollView>
+     
     </View>
   );
 };
@@ -104,12 +146,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "flex-start",
+    // justifyContent: "flex-start",
   },
   title: {
     fontWeight: "bold",
     fontSize: 40,
     paddingBottom: 15,
+    paddingLeft:15,
   },
   subtitle: {
     fontWeight: "200",
@@ -155,8 +198,13 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: "#FE555D",
   },
-  // investmentguideheader: {}
-  // ,
+  planslist:{
+   
+  },
+  investmentguideheader: {
+    padding:10
+  }
+  ,
   investmentguideheadertitle: {
     fontWeight: "bold",
     fontSize: 25,
