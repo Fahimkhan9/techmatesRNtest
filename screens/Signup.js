@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity,ScrollView } from "react-native";
 import FlatButton from "../components/Button";
 
 const Signup = ({ navigation }) => {
@@ -13,7 +13,7 @@ const Signup = ({ navigation }) => {
     <View style={styles.container}>
       <Image source={require("../assets/signupimg.png")} />
       <Text style={styles.title}>Stay on top your finance with us </Text>
-      <Text style={styles.subtitle} numberOfLines={3}>
+      <Text style={styles.subTitle} numberOfLines={3}>
         We are your new financial Advisors to recommed the best investments for
         you.
       </Text>
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     paddingVertical: 20,
   },
-  subtitle: {
+  subTitle: {
     fontWeight: "200",
     fontSize: 20,
     textAlign: "center",
